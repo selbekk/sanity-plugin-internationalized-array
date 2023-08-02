@@ -51,17 +51,6 @@ export const internationalizedArray = definePlugin<PluginConfig>((config) => {
             return props.renderDefault(props)
           }
 
-          const flatFieldTypeNames = flattenSchemaType(props.schemaType).map(
-            (field) => field.type.name
-          )
-          const hasInternationalizedArray = flatFieldTypeNames.some((name) =>
-            name.startsWith('internationalizedArray')
-          )
-
-          if (!hasInternationalizedArray) {
-            return props.renderDefault(props)
-          }
-
           return InternationalizedArrayProvider({
             ...props,
             internationalizedArray: pluginConfig,
